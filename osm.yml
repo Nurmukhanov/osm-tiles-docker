@@ -16,12 +16,6 @@ services:
       OSM_RENDER_X_MAX: -1.56313
       OSM_RENDER_Y_MIN: 48.07221
       OSM_RENDER_Y_MAX: 48.14671
-      # To restrict acces according to specific keys in QUERY_STRING
-      #  (in URLs like http://osmserver_hostname:osmserver_port/osm_tiles/{z}/{x}/{y}.png?keyId=abcdefghijklmnopqrstuvwxyz1234567890 - see sample file "test_with_keyId.html"),
-      #  use OSM_WEB_AUTHORIZED_IDS (multiple values must be pipe ('|') separated):
-      #OSM_WEB_AUTHORIZED_IDS: 'abcdefghijklmnopqrstuvwxyz1234567890|another_id'
-      # To restrict acces according to specific HTTP REFERERS, use OSM_WEB_AUTHORIZED_REFERERS (multiple values must be pipe ('|') separated):
-      #OSM_WEB_AUTHORIZED_REFERERS: 'www.example.com|www.example2.com'
     ports:
       - '80:80'
     command: 'start'
