@@ -162,8 +162,13 @@ RUN mkdir /var/lib/mod_tile && chown www-data /var/lib/mod_tile
 
 # Replace default apache index page with Leaflet demo
 COPY ./build/index.html /var/www/html/
+COPY ./build/data.json /var/www/html/
 
-RUN cd /var/www/html/ && wget http://cdn.leafletjs.com/leaflet/v1.3.1/leaflet.zip && unzip leaflet.zip && rm -rf leaflet.zip
+RUN cd /var/www/html/ && wget http://cdn.leafletjs.com/leaflet/v1.3.1/leaflet.zip \
+    && unzip leaflet.zip && rm -rf leaflet.zip
+
+RUN cd /var/www/html/ && git clone https://github.com/Nurmukhanov/leaflet-ajax.git \
+    && cp leaflet-ajax/dist/leaflet.ajax.js /var/www/html/ && rm -rf leaflet-ajax
 
 # Configure mod_tile
 COPY ./build/mod_tile.load /etc/apache2/mods-available/

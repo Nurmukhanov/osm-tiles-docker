@@ -2,33 +2,30 @@
 <html>
 
 <head>
-    <title>Leaflet Test of Zavpyj OSM Tile Server</title>
+    <title>test api</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="leaflet.css" />
+    <script src="leaflet.js"></script>
+    <script src="leaflet.ajax.js"></script>
 </head>
 
 <body>
     <div id="mapid" style="width: 1600px; height: 800px"></div>
-    <script src="leaflet.js"></script>
     <script>
     var osmLayer = L.tileLayer('/osm_tiles/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 19,
+        maxZoom: 25,
         id: 'osm.map'
     });
 
-    var mymap = L.map('mapid', {
-        center: [48.1329646, -1.6371024],
-        zoom: 10,
+    var map = L.map('mapid', {
+        center: [43.2220, 76.8512],
+        zoom: 2,
         layers: [osmLayer]
     });
 
-    osmLayer.addTo(mymap);
-
-    L.marker([48.1329646, -1.6371024]).addTo(mymap)
-        .bindPopup('Micropole Rennes')
-        .openPopup();
+    osmLayer.addTo(map);
+    new L.GeoJSON.AJAX("data.json").addTo(map);
     </script>
 </body>
 
