@@ -13,9 +13,10 @@
 <body>
     <div id="mapid" style="width: 1600px; height: 800px"></div>
     <script>
-    var osmLayer = L.tileLayer('/osm_tiles/{z}/{x}/{y}.png', {
+    var osmLayer = L.tileLayer('/osm_tiles/{z}/{x}/{y}.png?keyId={keyId}', {
         maxZoom: 25,
-        id: 'osm.map'
+        id: 'osm.map',
+        keyId: 'abcdefghijklmnopqrstuvwxyz1234567890'
     });
 
     var map = L.map('mapid', {
